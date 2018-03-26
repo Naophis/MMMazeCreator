@@ -30,21 +30,22 @@ var map;
 
 function getMapData() {
     var m = map.getMapData();
-    var tmp = "{";
-    for (var i = 0; i < m.length; i++) {
-        tmp += "{";
-        for (var j = 0; j < m.length; j++) {
+    var length = m.length;
+    var tmp = "[";
+    for (var i = 0; i < length; i++) {
+        tmp += "[";
+        for (var j = 0; j < length; j++) {
             tmp += m[i][j];
-            if (j != 15) {
+            if (j !== (length - 1)) {
                 tmp += ",";
             }
         }
-        tmp += "}";
-        if (i != 15) {
+        tmp += "]";
+        if (i !== (length - 1)) {
             tmp += ",";
         }
     }
-    tmp += "}";
+    tmp += "]";
 
     $("#map_result").html(tmp);
 }
@@ -78,4 +79,3 @@ var arrayToMatrix = function (array, mazeSize) {
     }
     return map;
 };
-
