@@ -1,93 +1,32 @@
-#title {
-    position: absolute;
-    top: 0px;
-    width: 400px;
-}
 
-#map_data {
-    position: absolute;
-    top: 50px;
-}
-
-
-#map_result {
-    /*position: absolute;*/
-    top: 50px;
-    /*left: 750px;*/
-    width: 250px;
-    height: 250px;
-    background-color: transparent;
-}
-
-#map_resultBtn {
-    position: absolute;
-    top: 0px;
-    left: 50px;
-    width: 150px;
-    height: 50px;
-    background-color: transparent;
-}
-
-#map_create16 {
-    position: absolute;
-    top: 0px;
-    left: 200px;
-    width: 150px;
-    height: 50px;
-    background-color: transparent;
-}
-
-#map_create32 {
-    position: absolute;
-    top: 0px;
-    left: 350px;
-    width: 150px;
-    height: 50px;
-    background-color: transparent;
-}
-
-body {
-    background-color: #add8ff;
-}
-
-#container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
 
 .jumbotron.special {
     padding: 0 0 40px 40px;
     margin: auto auto;
 }
 
-.btn2 {
-    background: #333;
-    color: #111;
-    padding: 18px 18px;
+.wallBtn {
+    /* background: #333; */
+    /* color: #111; */
+    /* padding: 18px 18px; */
     border: 1px solid rgba(255, 255, 255, 0.125);
     background-image: url(line2.svg);
+    position:inherit;
 }
 
-.btn2:focus {
+.wallBtn:focus {
     outline: none;
 }
 
-.btn2:target {
+.wallBtn:target {
     outline: none;
 }
 
-#target2{
-    position: absolute;
-    padding-top: 10px;
-    left:0px;
-}
-
-.btn2:active {
+.wallBtn:active {
     outline: none;
 }
 
-.btn2:hover {
+.wallBtn:hover {
     outline: none;
 }
 
