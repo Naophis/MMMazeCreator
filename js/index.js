@@ -9,6 +9,7 @@ var mc = new MazeCreator({
 });
 mc.on("click", function (e) {
     console.log(e);
+    mc.step();
 });
 
 
@@ -18,6 +19,8 @@ mc.on("change", function (e) {
 
 mc.on("mouseover", function (e) {
     document.getElementById("postion").innerText = `(${e.x},${e.y})`;
+
+    
 });
 
 document.getElementById("show").addEventListener("click", function () {

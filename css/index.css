@@ -1,14 +1,4 @@
-
-
-.jumbotron.special {
-    padding: 0 0 40px 40px;
-    margin: auto auto;
-}
-
 .wallBtn {
-    /* background: #333; */
-    /* color: #111; */
-    /* padding: 18px 18px; */
     border: 1px solid rgba(255, 255, 255, 0.125);
     background-image: url(line2.svg);
     position:inherit;

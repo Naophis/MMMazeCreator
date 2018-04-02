@@ -44,15 +44,13 @@ export class View {
 
     createButtonMap(size: number): void {
         let targetDom = document.getElementById(this.targetId);
-        targetDom.innerHTML = "";
 
-        let headeStyle = `float:left;
-        max-height:${this.paddingSize * 2 + 2}px;
-        min-width:${this.paddingSize * 2 + 2}px;
-        background-color:rgba(0,0,0,0);
-        border:none;
-        `;
-        // border: 1px solid rgba(255, 255, 255, 0.125);
+        let headeStyle = `float:left;`;
+        headeStyle += `max-height:${this.paddingSize * 2 + 2}px;`;
+        headeStyle += `min-width:${this.paddingSize * 2 + 2}px;`;
+        headeStyle += `background-color:rgba(0,0,0,0);`;
+        headeStyle += `border:none;`;
+
         let tmp = "";
         for (let i: number = -1; i < size + 1; i++) {
             let line;
@@ -63,34 +61,21 @@ export class View {
             }
             tmp += line;
         }
-        // targetDom.insertAdjacentHTML("beforeend", `<div class="map_row">${tmp}</div>`);
 
         let rows = "";
-        let rowStyle = `max-height:${this.paddingSize * 2 + 2}px;
-        min-width:${this.paddingSize * 2 + 2}px;
-        background-color:rgba(0,0,0,0);
-        border:none;
-        `;
+        let rowStyle = `max-height:${this.paddingSize * 2 + 2}px;`;
+        rowStyle += `min-width:${this.paddingSize * 2 + 2}px;`;
+        rowStyle += `background-color:rgba(0,0,0,0);`;
+        rowStyle += `border:none;`;
+
         for (let i: number = size - 1; i >= 0; i--) {
             let tmpBox = "";
             for (let j = 0; j < size; j++) {
                 tmpBox += `<button class="${this.btnClassName}" id=m_${this.targetId}_${j}_${i} x=${j} y=${i}></button>`;
             }
-            let head = "";//`<button class="btn_left" style="${rowStyle}" >${i}</button>`;
-            let tail = "";//`<button class="btn_right" style="${rowStyle}">${i}</button>`;
-            rows += `<div style="float:left;line-height:0px;max-height:${this.paddingSize * 2 + 2}px;">${head}${tmpBox}${tail}</div>`;
+            rows += `<div style="position:relative;z-index:100;line-height:0px;max-height:${this.paddingSize * 2 + 2}px;">${tmpBox}</div>`;
         }
         targetDom.insertAdjacentHTML("beforeend", rows);
-
-        let line2 = "";
-        for (let i: number = -1; i < size + 1; i++) {
-            if (i >= 0 && i <= size - 1) {
-                line2 += `<button class="btn_footer" style="${headeStyle}" disabled>${i}</button>`;
-            } else {
-                line2 += `<button style="${headeStyle}" disabled></button>`;
-            }
-        }
-        // targetDom.insertAdjacentHTML("beforeend", `<div class="map_row" style="float:left;">${line2}</div>`);
 
         this.setProp();
     }

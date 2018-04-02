@@ -3,18 +3,20 @@ import { Controller } from "./Controller";
 import { JSON_FORMAT } from "./Interface";
 import { Observable } from "./Observable";
 import { Canvas } from "./canvas/Canvas";
+import { Search } from "./search/Search";
 
 export class MazeCreator {
     private ctrl: Controller;
     private format: JSON_FORMAT;
     private observer: Observable;
     private canvas: Canvas;
+    private search: Search;
     constructor(json: JSON_FORMAT) {
         let param: JSON_FORMAT = {
             size: 16,
             targetId: undefined,
             scale: 1,
-            bgColor: "#333",
+            bgColor: "rgba(0,0,0,0)",
             color: "#111"
         };
 
@@ -39,9 +41,10 @@ export class MazeCreator {
         if (json.color) {
             param.color = json.color;
         }
-
+        document.getElementById(param.targetId).innerHTML = "";
         this.ctrl = new Controller(param, this.observer);
         this.canvas = new Canvas(param);
+        this.search = new Search(param);
     }
 
     exportAsString(): string {
@@ -76,8 +79,9 @@ export class MazeCreator {
 
     }
 
-    show() {
-        this.canvas.show();
+    step() {
+        this.search.setModel(this.ctrl.getMapData());
     }
+
 }
 window["MazeCreator"] = MazeCreator;

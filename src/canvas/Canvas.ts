@@ -26,10 +26,11 @@ export class Canvas {
 
     createFrame() {
         let targetDom = document.getElementById(this.targetId);
-        let defaultStyle = "display:none;overflow:hidden;"
+        let defaultStyle = "display:block;overflow:hidden;";
         document.getElementById(this.targetId).insertAdjacentHTML("beforeend",
             `<div id="${this.canvasDivId}" style="${defaultStyle}"></div>`
         );
+        this.show();
     }
 
     setupCanvas() {
@@ -44,16 +45,11 @@ export class Canvas {
         let height = canvasDiv.clientHeight;
         this.offsetX = (this.defaultOffsetX * this.scale) + 1;
         this.offsetY = ((this.defaultOffsetY + 2) * this.scale);
-        console.log(this.offsetX, height - this.offsetY);
-
 
         ctx.strokeStyle = 'yellow';
 
-        console.log(this.offsetX, height - this.offsetY);
         ctx.beginPath();
         ctx.moveTo(this.offsetX, height - this.offsetY);
-
-        // ctx.lineTo(this.offset, this.offset + 2);
 
         ctx.lineTo(this.offsetX, this.offsetY * 2);
         ctx.lineTo(this.offsetX * 2, this.offsetY * 1);
@@ -67,13 +63,17 @@ export class Canvas {
 
     show() {
         let showStyle = "display:block;position:absolute;top:0;right:0;bottom:0;left:0;"
+
         let canvasDiv = document.getElementById(this.canvasDivId);
         let targetDom = document.getElementById(this.targetId);
+
         canvasDiv.style.display = "block";
         canvasDiv.style.position = "absolute";
+        canvasDiv.style.top = `0px`;
         canvasDiv.style.height = `${targetDom.clientHeight}px`;
         canvasDiv.style.width = `${targetDom.clientHeight}px`;
-        canvasDiv.style.backgroundColor = "rgba(255,255,255,0.0)";
+        canvasDiv.style.backgroundColor = "rgba(0,0,0,0.0)";
+        canvasDiv.style.zIndex = "1";
         canvasDiv.innerHTML = "";
 
         canvasDiv.insertAdjacentHTML("beforeend",
@@ -86,7 +86,7 @@ export class Canvas {
         let self = this;
         let evtFnc = function () {
             canvasDiv.removeEventListener("dblclick", evtFnc);
-            canvasDiv.style.display = "none";
+            // canvasDiv.style.display = "none";
             canvasDiv.innerHTML = "";
         }
         canvasDiv.addEventListener("dblclick", evtFnc);
